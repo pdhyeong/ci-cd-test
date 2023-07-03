@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.listen(8080,function(){
+app.listen(5050,function(){
     console.log("going weapon");
 })
 
