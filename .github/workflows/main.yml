@@ -12,7 +12,7 @@ on:
 
 env:
   DOCKER_IMAGE: ghcr.io/pdhyeong/ci-cd-test
-  NAME: ci-cd
+  NAME: 
   VERSION: ${{ github.sha }}
 
 jobs:
@@ -71,6 +71,6 @@ jobs:
 
       - name: Docker run
         run: |
-          docker stop ${{env.CONTAINER_NAME}} && docker rm ${{env.CONTAINER_NAME}} && docker rmi ${{env.DOCKER_IMAGE}}
-          docker run -d -p 80:3000 \
-           --name ${{env.CONTAINER_NAME}} --restart always ${{env.DOCKER_IMAGE}}:latest
+          docker stop ${{env.NAME}} && docker rm ${{env.NAME}} && docker rmi ${{env.DOCKER_IMAGE}}
+          docker run -d -p 5050:5050 \
+           --name ${{env.NAME}} --restart always ${{env.DOCKER_IMAGE}}:latest
