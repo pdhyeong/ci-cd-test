@@ -81,12 +81,7 @@ jobs:
         run:
           docker images
           
-      - name: Docker rm
-        run:
-          docker rm -f ${{env.NAME}}
-
-
       - name: Docker run
-        run: 
-          docker run -d -p 5050:5050 \
-          --name ${{env.NAME}} --restart always ${{ env.DOCKER_IMAGE }}:latest
+        run: |
+          docker ps -q --filter "name={{env.DOCKER_IMAGE}}" | grep -q . && docker stop {{env.DOCKER_IMAGE}} && docker rm -fv {{env.DOCKER_IMAGE}}
+          docker run -d -p 5050:5050 --name {{env.NAME}} --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
