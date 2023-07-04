@@ -80,10 +80,6 @@ jobs:
       - name: Check docker images
         run:
           docker images
-
-      - name: Docker stop
-        run:
-          docker stop ${{env.NAME}} 
           
       - name: Docker rm
         run:
