@@ -84,10 +84,7 @@ jobs:
       - name: Docker rm
         run:
           docker rm -f ${{env.NAME}}
-          
-      - name: Docker rmi
-        run:
-          docker rmi ${{env.DOCKER_IMAGE}}
+
 
       - name: Docker run
         run: 
