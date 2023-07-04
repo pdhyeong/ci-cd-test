@@ -44,7 +44,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{secrets.ACTOR}}
-          password: ${{secrets.PS_TOKEN}}
+          password: ${{secrets.CR_PAT}}
 
       - name: Docker image push
         uses: docker/build-push-action@v4
@@ -67,7 +67,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{secrets.ACTOR}}
-          password: ${{secrets.PS_TOKEN}}
+          password: ${{secrets.CR_PAT}}
 
       - name: Check docker container
         run: 
