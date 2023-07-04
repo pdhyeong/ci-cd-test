@@ -79,6 +79,6 @@ jobs:
 
       - name: Docker run
         run: |
-          docker stop -f ${{env.NAME}} && docker rm ${{env.NAME}} && docker rmi ${{env.DOCKER_IMAGE}}
+          docker stop ${{env.NAME}} && docker rm -f ${{env.NAME}} && docker rmi ${{env.DOCKER_IMAGE}}
           docker run -d -p 5050:5050 \
           --name ${{env.NAME}} --restart always ${{ env.DOCKER_IMAGE }}:latest
