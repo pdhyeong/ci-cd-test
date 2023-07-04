@@ -6,5 +6,5 @@ app.listen(5050,function(){
 })
 
 app.get('/pay',function(req,res){
-    res.send("성공입니다. ㅎㅎ");
+    return res.send("성공입니다.ㅎㅎ");
 })

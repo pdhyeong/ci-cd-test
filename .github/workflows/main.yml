@@ -83,5 +83,5 @@ jobs:
           
       - name: Docker run
         run: |
-          docker ps -q --filter "name={{env.DOCKER_IMAGE}}" | grep -q . && docker stop {{env.DOCKER_IMAGE}} && docker rm -fv {{env.DOCKER_IMAGE}}
-          docker run -d -p 5050:5050 --name {{env.NAME}} --restart always {{ env.DOCKER_IMAGE }}:latest
+          docker ps -q --filter "name=${{env.DOCKER_IMAGE}}" | grep -q . && docker stop ${{env.DOCKER_IMAGE}} && docker rm -fv {{env.DOCKER_IMAGE}}
+          docker run -d -p 5050:5050 --name ${{env.NAME}} --restart always ${{ env.DOCKER_IMAGE }}:latest
