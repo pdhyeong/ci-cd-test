@@ -84,8 +84,4 @@ jobs:
       - name: Docker run
         run: |
           docker ps -q --filter "name=${{env.NAME}}" | grep -q . && docker stop ${{env.NAME}} && docker rm -fv ${{env.NAME}}
-          docker run -d -p 5050:5050 \ --name ${{env.NAME}}
-
-      - name: Clean container
-        run:
-          docker rm $(docker ps -a -q -f status=exited)
+          docker run -d -p 5050:5050 --name ${{env.NAME}} --restart always ${{ env.DOCKER_IMAGE }}:latest

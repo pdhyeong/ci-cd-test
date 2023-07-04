@@ -1,10 +1,15 @@
-function User(name,age) {
-    this.name = name;
-    this.age = age;
+function Item(title, price) {
+    this.title = title;
+    this.price = price;
+    this.showPrice = function(){
+        console.log(`가격은 ${price} 원 입니다.`);
+    }
+
 }
 
-let user1 = new User('Mike',30);
-let user2 = new User('Mike',30);
-let user3 = new User('Mike',30);
+const item1 = new Item("mike",3000);
+const item2 = Item("mek",3000);
 
-console.log(user1,user2);
+console.log(item1,item2);
+
+item1.showPrice();
