@@ -12,7 +12,7 @@ on:
 
 env:
   DOCKER_IMAGE: ghcr.io/pdhyeong/ci-cd-test
-  NAME: 
+  NAME: ci-cd
   VERSION: ${{ github.sha }}
 
 jobs:
@@ -68,7 +68,10 @@ jobs:
           registry: ghcr.io
           username: ${{secrets.actor}}
           password: ${{secrets.CR_PAT}}
-
+          
+      - name: Check docker
+        run: docker ps -a
+      
       - name: Docker run
         run: |
           docker stop ${{env.NAME}} && docker rm ${{env.NAME}} && docker rmi ${{env.DOCKER_IMAGE}}
