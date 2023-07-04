@@ -11,8 +11,8 @@ on:
   workflow_dispatch: 
 
 env:
-  DOCKER_IMAGE: ghcr.io/codestates-beb/beb-07-final-entasis
-  NAME: entasis
+  DOCKER_IMAGE: ghcr.io/pdhyeong/ci-cd-test
+  NAME: ci-cd-test
   VERSION: ${{ github.sha }}
 
 jobs:
