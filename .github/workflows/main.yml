@@ -68,12 +68,11 @@ jobs:
           registry: ghcr.io
           username: ${{secrets.actor}}
           password: ${{secrets.CR_PAT}}
-          
+
       - name: Check docker
         run: docker ps -a
       
       - name: Docker run
         run: |
           docker stop ${{env.NAME}} && docker rm ${{env.NAME}} && docker rmi ${{env.DOCKER_IMAGE}}
-          docker run -d -p 5050:5050 \
-           --name ${{env.NAME}} --restart always ${{env.DOCKER_IMAGE}}:latest
+          docker run -d -p 5050:5050
