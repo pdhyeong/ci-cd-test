@@ -53,7 +53,7 @@ jobs:
       - name: Delete container
         run: 
           docker rm -f $(docker ps -aq)
-          
+
       - name: Docker image push
         uses: docker/build-push-action@v4
         with: 
@@ -85,8 +85,19 @@ jobs:
         run:
           docker images
 
+      - name: Docker stop
+        run:
+          docker stop ${{env.NAME}} 
+          
+      - name: Docker rm
+        run:
+          docker rm -f ${{env.NAME}}
+          
+      - name: Docker rmi
+        run:
+          docker rmi ${{env.DOCKER_IMAGE}}
+
       - name: Docker run
-        run: |
-          docker stop ${{env.NAME}} && docker rm -f ${{env.NAME}} && docker rmi ${{env.DOCKER_IMAGE}}
+        run: 
           docker run -d -p 5050:5050 \
           --name ${{env.NAME}} --restart always ${{ env.DOCKER_IMAGE }}:latest
